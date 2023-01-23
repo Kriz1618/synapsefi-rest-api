@@ -1,0 +1,220 @@
+@api = http://localhost:3001/api
+
+### get user account
+GET {{api}}/users/63caf414e53b3d7739000295?fullData=not
+
+### get user accounts
+GET {{api}}/users?page=1&pageSize=8&showTokens=no
+
+
+### create user with basic data
+POST {{api}}/users
+Content-Type: application/json
+
+{
+  "logins": [
+    {
+      "email": "kriz12@yopmail.com"
+    }
+  ],
+  "phone_numbers": [
+    "3204925731"
+  ],
+  "legal_names": [
+    "Testing User"
+  ],
+  "extra": {
+    "supp_id": "kt_123456",
+    "cip_tag": 1,
+    "is_business": false
+  }
+}
+
+
+### create user
+POST {{api}}/users
+Content-Type: application/json
+
+{
+  "logins": [
+    {
+      "email": "test-user@synapsepay.com",
+      "password": "TestUser123$"
+    }
+  ],
+  "phone_numbers": [
+    "901.111.1111"
+  ],
+  "legal_names": [
+    "Larry Lamda"
+  ],
+  "documents": [
+    {
+      "email": "test@test.com",
+      "phone_number": "901.111.1111",
+      "ip": "::1",
+      "name": "Larry Lamda",
+      "alias": "Larry",
+      "entity_type": "M",
+      "entity_scope": "Arts & Entertainment",
+      "day": 8,
+      "month": 11,
+      "year": 1988,
+      "address_street": "1 Market St.",
+      "address_city": "SF",
+      "address_subdivision": "CA",
+      "address_postal_code": "94105",
+      "address_country_code": "US",
+      "virtual_docs": [
+        {
+          "document_value": "2222",
+          "document_type": "SSN",
+          "meta": {
+            "country_code": "US"
+          }
+        },
+        {
+          "document_value": "2222",
+          "document_type": "PASSPORT",
+          "meta": {
+            "country_code": "US"
+          }
+        }
+      ],
+      "physical_docs": [
+        {
+          "document_value": "data:image/gif;base64,SUQs==",
+          "document_type": "GOVT_ID",
+          "meta": {
+            "country_code": "US",
+            "state_code": "CA"
+          }
+        },
+        {
+          "document_value": "data:image/gif;base64,SUQs==",
+          "document_type": "GOVT_ID_BACK",
+          "meta": {
+            "country_code": "US",
+            "state_code": "CA"
+          }
+        }
+      ],
+      "social_docs": [
+        {
+          "document_value": "101 2nd St. STE 1500 SF CA US 94105",
+          "document_type": "MAILING_ADDRESS",
+          "meta": {
+            "address_street": "101 2nd St STE 1500",
+            "address_city": "SF",
+            "address_subdivision": "CA",
+            "address_postal_code": "94105",
+            "address_country_code": "US",
+            "address_care_of": "Some User"
+          }
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "supp_id": "122eddfgbeafrfvbbb",
+    "cip_tag": 1,
+    "is_business": false
+  }
+}
+
+### update user data
+PATCH {{api}}/users/63caf414e53b3d7739000295
+Content-Type: application/json
+
+{
+  "documents": [
+    {
+      "email": "test@test.com",
+      "phone_number": "901.111.1111",
+      "ip": "::1",
+      "name": "Test User",
+      "alias": "Test",
+      "entity_type": "M",
+      "entity_scope": "Arts & Entertainment",
+      "day": 2,
+      "month": 5,
+      "year": 1989,
+      "address_street": "1 Market St.",
+      "address_city": "SF",
+      "address_subdivision": "CA",
+      "address_postal_code": "94105",
+      "address_country_code": "US",
+      "virtual_docs": [
+        {
+          "document_value": "2222",
+          "document_type": "TIN",
+          "meta": {
+            "country_code": "US"
+          }
+        }
+      ],
+      "physical_docs": [
+        {
+          "document_value": "data:image/gif;base64,SUQs==",
+          "document_type": "GOVT_ID",
+          "meta": {
+            "country_code": "US",
+            "state_code": "CA"
+          }
+        },
+        {
+          "document_value": "data:image/gif;base64,SUQs==",
+          "document_type": "GOVT_ID_BACK",
+          "meta": {
+            "country_code": "US",
+            "state_code": "CA"
+          }
+        }
+      ],
+      "social_docs": [
+        {
+          "document_value": "101 2nd St. STE 1500 SF CA US 94105",
+          "document_type": "MAILING_ADDRESS",
+          "meta": {
+            "address_street": "101 2nd St STE 1500",
+            "address_city": "SF",
+            "address_subdivision": "CA",
+            "address_postal_code": "94105",
+            "address_country_code": "US",
+            "address_care_of": "Some User"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+### createdeposit account
+POST {{api}}/nodes/63caf414e53b3d7739000295
+Content-Type: application/json
+x-authentication-token: oauth_MVJusmgqN1lECaif54b0eDWZnIOPQy2YB7Lj0KGk
+
+{
+  "type": "DEPOSIT-US",
+  "info": {
+    "nickname": "Deposit Account",
+    "document_id": "2a4a5957a3a62aaac1a0dd0edcae96ea2cdee688ec6337b20745eed8869e3ac8",
+    "type": "PERSONAL",
+    "class": "CHECKING"
+  }
+}
+
+### get user nodes
+GET {{api}}/nodes/63caf414e53b3d7739000295?type=CRYPTO-US
+Content-Type: application/json
+x-authentication-token: oauth_MVJusmgqN1lECaif54b0eDWZnIOPQy2YB7Lj0KGk
+
+
+### update node
+PATCH  {{api}}/nodes/63caf414e53b3d7739000295/63cea8c32b8b2439137aa9b7
+Content-Type: application/json
+x-authentication-token: oauth_MVJusmgqN1lECaif54b0eDWZnIOPQy2YB7Lj0KGk
+
+{
+  "next_payment": 14
+}
