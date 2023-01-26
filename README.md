@@ -45,6 +45,7 @@ npx tsc --init
 CLIENT_ID = VALUE
 CLIENT_SECRET = VALUE
 PORT = VALUE
+FINGER_PRINT = VALUE
 ```
 
 * Adding scripts in the `package.json` file

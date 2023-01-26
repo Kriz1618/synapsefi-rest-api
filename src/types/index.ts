@@ -14,6 +14,12 @@ export type ExcecuteRequest = (
   oauthKey?: string,
 ) => Promise<any>;
 
+export type SubscriptionRequest = (
+  endpoint: string,
+  method?: string,
+  data?: any
+) => Promise<any>;
+
 type BasicDocument = {
   document_value: string,
   document_type: string,
@@ -222,4 +228,12 @@ export type updateTransactioParams = {
   userId: string,
   nodeId: string,
   oauth: string
+};
+
+export type subscriptionParams = {
+  scope: string[]
+};
+
+export type updateSubscriptionParams = {
+  is_active: boolean
 };

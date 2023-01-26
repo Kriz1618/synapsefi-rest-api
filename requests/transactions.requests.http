@@ -3,20 +3,20 @@
 ### generate oauth token
 POST {{api}}/users/oauth/63caf414e53b3d7739000295
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 ### get user transactions
 GET {{api}}/transactions/user?userId=63caf414e53b3d7739000295
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 ### get node transactions
 GET {{api}}/transactions/node?userId=63caf414e53b3d7739000295&nodeId=63cea8c32b8b2439137aa9b7
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 ### create transaction
 POST {{api}}/transactions
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 {
     "userId": "63caf414e53b3d7739000295",
@@ -38,7 +38,7 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 ### create batch transactions
 POST {{api}}/transactions/batch
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 {
     "userId": "63caf414e53b3d7739000295",
@@ -79,7 +79,7 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 ### retry transaction
 patch {{api}}/transactions/63d2b95aba25ee173c6cae76
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 {
     "userId": "63caf414e53b3d7739000295",
@@ -89,7 +89,7 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 ### delete transaction
 DELETE {{api}}/transactions/63d2b95aba25ee173c6cae76
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_CAjoqlzgU7hY92s03VFke8BSdKw1GQXcvI5H6yOM
 
 {
     "userId": "63caf414e53b3d7739000295",

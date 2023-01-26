@@ -10,7 +10,7 @@ import {
   updateUserData,
 } from '../services/users.service';
 
-export const createNewUser: Handler = async (req, res, next) => {
+export const createNewUser: Handler = async (req, res) => {
   try {
     const response = await createUser(req.body);
     return res.json(response);

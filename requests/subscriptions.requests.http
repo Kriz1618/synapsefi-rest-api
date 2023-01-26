@@ -1,0 +1,53 @@
+@api = http://localhost:3001/api
+
+### generate oauth token
+POST {{api}}/users/oauth/63caf414e53b3d7739000295
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+### create subscriptions
+POST {{api}}/subscriptions
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+{
+  "scope": [
+    "USERS|POST",
+    "USER|PATCH",
+    "NODES|POST",
+    "NODE|PATCH",
+    "TRANS|POST"
+  ],
+  "url": "https://eoey9ujcjduzcdo.m.pipedream.net"
+}
+
+### get subscription
+GET {{api}}/subscriptions/63d2f378a94f543916773289
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+
+### get subscriptions logs
+GET {{api}}/subscriptions/logs
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+
+
+### update subscription
+PATCH  {{api}}/subscriptions/63d2f378a94f543916773289
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+{
+  "is_active": false
+}
+
+
+### Test webhook client
+POST https://eoey9ujcjduzcdo.m.pipedream.net
+Content-Type: application/json
+
+{
+  "test": "event"
+}
