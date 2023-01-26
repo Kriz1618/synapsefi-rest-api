@@ -74,7 +74,7 @@ export type UserData = {
   permission?: string,
   permission_code?: string,
   update?: any,
-  oauth?: string
+  oauth: string
 };
 
 export type NodeData = {
@@ -102,7 +102,7 @@ export type NodeData = {
       apr: number,
       cap: number
     },
-    payee_address:{
+    payee_address: {
       address_street: string,
       address_city: string,
       address_subdivision: string,
@@ -123,26 +123,33 @@ export type NodeData = {
   },
   allowed?: string
   preview_only?: boolean,
-  oauth?: string
+  oauth: string
 };
 
 enum NodeTypeEnum {
   ACH = 'ACH-US',
+  CARD = 'CARD-US',
   CHECK = 'CHECK-US',
   CLEARING = 'CLEARING-US',
   CMA = 'CMA',
   CRYPTO = 'CRYPTO-US',
   CUSTODY = 'CUSTODY-US',
-  DEPOSIT = 'IC-DEPOSIT-US',
+  DEPOSIT = 'DEPOSIT-US',
+  IBDEPOSIT = 'IB-DEPOSIT-US',
+  IBSUBACCOUNT = 'IB-SUBACCOUNT-US',
+  ICDEPOSIT = 'IC-DEPOSIT-US',
   INTERCHANGE = 'INTERCHANGE-US',
-  LOAN = 'LOAN-US',
+  IOU = 'IOU',
   LOANRESERVE = 'LOAN-RESERVE-US',
-  ONETIME = 'ONE-TIME',
-  OPEN = 'OPEN',
+  LOAN = 'LOAN-US',
   REPAY = 'REPAY-US',
-  REVOLVING = 'REVOLVING',
+  RESERVE = 'RESERVE-US',
   RPPS = 'RPPS-US',
   SUBACCOUNT = 'SUBACCOUNT-US',
+  SUBCARD = 'SUBCARD-US',
+  SYNAPSE = 'SYNAPSE-US',
+  TRADE = 'TRADE-US',
+  TRIUMPHSUBACCOUNT = 'TRIUMPH-SUBACCOUNT-US',
   WIRE = 'WIRE-INT',
   WIREUS = 'WIRE-US',
 };
@@ -161,5 +168,22 @@ export type NodeParams = {
   reauth?: string,
   micro?: number[],
   resend_micro?: string,
-  oauth?: string
-}
+  oauth: string
+};
+
+export type NodeBarcodeParams = {
+  userId: string,
+  nodeId: string,
+  amount: number,
+  currency: string,
+  retailerId: number,
+  oauth: string
+};
+
+export type TransactionsParams = {
+  pageSize: string,
+  page: string,
+  nodeId?: string,
+  transactioId?: string,
+  oauth: string
+};

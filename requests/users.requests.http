@@ -1,5 +1,10 @@
 @api = http://localhost:3001/api
 
+### generate oauth token
+POST {{api}}/users/oauth/63caf414e53b3d7739000295
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
 ### get user account
 GET {{api}}/users/63caf414e53b3d7739000295?fullData=not
 
@@ -187,34 +192,4 @@ Content-Type: application/json
       ]
     }
   ]
-}
-
-### createdeposit account
-POST {{api}}/nodes/63caf414e53b3d7739000295
-Content-Type: application/json
-x-authentication-token: oauth_MVJusmgqN1lECaif54b0eDWZnIOPQy2YB7Lj0KGk
-
-{
-  "type": "DEPOSIT-US",
-  "info": {
-    "nickname": "Deposit Account",
-    "document_id": "2a4a5957a3a62aaac1a0dd0edcae96ea2cdee688ec6337b20745eed8869e3ac8",
-    "type": "PERSONAL",
-    "class": "CHECKING"
-  }
-}
-
-### get user nodes
-GET {{api}}/nodes/63caf414e53b3d7739000295?type=CRYPTO-US
-Content-Type: application/json
-x-authentication-token: oauth_MVJusmgqN1lECaif54b0eDWZnIOPQy2YB7Lj0KGk
-
-
-### update node
-PATCH  {{api}}/nodes/63caf414e53b3d7739000295/63cea8c32b8b2439137aa9b7
-Content-Type: application/json
-x-authentication-token: oauth_MVJusmgqN1lECaif54b0eDWZnIOPQy2YB7Lj0KGk
-
-{
-  "next_payment": 14
 }

@@ -1,15 +1,14 @@
 import { Handler } from "express";
 
-import { 
-  createUser,
-  createNode,
-  getUser,
-  getUserNodes,
-  getUsers,
-  updateUserData,
-  updateNode,
-} from '../services/synapse.service';
 import { UserQuery } from "../types";
+import { handleError } from "../commons";
+import {
+  createUser,
+  getUsers,
+  getOAuth,
+  getUser,
+  updateUserData,
+} from '../services/users.service';
 
 export const createNewUser: Handler = async (req, res, next) => {
   try {
@@ -47,40 +46,12 @@ export const updateUser: Handler = async (req, res) => {
   }
 };
 
-export const creatNewNode: Handler = async (req, res) => {
+export const generateOaut: Handler = async (req, res) => {
   try {
-    const response = await createNode(req.params.userId, req.body);
+    const { userId } = req.params
+    const response = await getOAuth(userId);
     return res.json(response);
   } catch (error) {
     return res.status(500).json(handleError(error));
   }
-};
-
-export const getNodes: Handler = async (req, res) => {
-  try {
-    const nodes = await getUserNodes(req.params.userId, req.query);
-    return res.json(nodes);
-  } catch (error) {
-    return res.status(500).json(handleError(error));
-  }
-};
-
-export const updateUserNode: Handler = async (req, res) => {
-  try {
-    const { userId, nodeId } = req.params
-    const response = await updateNode(userId, nodeId, req.body);
-    return res.json(response);
-  } catch (error) {
-    return res.status(500).json(handleError(error));
-  }
-};
-
-const handleError = (error: any) => {
-  if (error?.response?.data) {
-    return error.response.data;
-  } else if (error instanceof Error) {
-    return { error: error.message };
-  }
-
-  return `Internal error - ${error}`;
 };

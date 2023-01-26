@@ -1,0 +1,59 @@
+@api = http://localhost:3001/api
+
+
+### get crypto quotes
+GET {{api}}/nodes/types 
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+### generate oauth token
+POST {{api}}/users/oauth/63caf414e53b3d7739000295
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+### create deposit account
+POST {{api}}/nodes/63caf414e53b3d7739000295
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+{
+  "type": "DEPOSIT-US",
+  "info": {
+    "nickname": "Deposit Account",
+    "document_id": "2a4a5957a3a62aaac1a0dd0edcae96ea2cdee688ec6337b20745eed8869e3ac8",
+    "type": "PERSONAL",
+    "class": "CHECKING"
+  }
+}
+
+### get user nodes
+GET {{api}}/nodes/all/63caf414e53b3d7739000295?type=CRYPTO-US
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+
+### update node
+PATCH  {{api}}/nodes/63caf414e53b3d7739000295/63cea8c32b8b2439137aa9b7
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+{
+  "next_payment": 14
+}
+
+
+### create ecash barcode
+POST  {{api}}/nodes/ecash/barcode
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+{
+  "amount": 100,
+  "currency": "USD",
+  "userId": "63caf414e53b3d7739000295",
+  "nodeId": "63cea8c32b8b2439137aa9b7",
+  "retailerId": 2481
+}
+
+### get crypto quotes
+GET {{api}}/nodes/crypto-quotes 
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV

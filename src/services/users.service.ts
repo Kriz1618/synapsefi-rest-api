@@ -1,4 +1,4 @@
-import { NodeData, NodeParams, UserBody, UserData, UserQuery } from "../types";
+import { UserBody, UserData, UserQuery } from "../types";
 import { httpClient } from "./httpClient.service";
 import { scope } from "../consts";
 
@@ -29,31 +29,30 @@ export const createUser = async (params: UserBody) => {
 
 export const updateUserData = async (userId: string, params: UserData) => {
   const endpoint = `users/${userId}`;
-  const oauthKey = params.oauth || await getOAuth(userId);
-
-  return await httpClient(endpoint, 'patch', null, params, oauthKey);
+  return await httpClient(endpoint, 'patch', null, params, params.oauth);
 };
 
-export const createNode = async (userId: string, params: NodeData) => {
-  const endpoint = `users/${userId}/nodes`;
-  const oauthKey = params.oauth || await getOAuth(userId);
-  console.log('40', 'oauthKey', oauthKey, userId);
-  return await httpClient(endpoint, 'post', null, params, oauthKey);
+export const getUserOAuth = async (userId: string) => {
+  const user = await getUser(userId, 'no');
+
+  const identity = await httpClient(
+    `oauth/${userId}`,
+    'post',
+    null,
+    {
+      refresh_token: user.refresh_token,
+      scope
+    }
+  );
+
+  if (!identity?.oauth_key) {
+    throw 'Error getting oauth key';
+  }
+
+  return identity.oauth_key;
 };
 
-export const getUserNodes = async (userId: string, params: any) => {
-  const oauthKey = params.oauth || await getOAuth(userId);
-  return await httpClient(`users/${userId}/nodes`, 'get', params, null, oauthKey);
-};
-
-export const updateNode = async (userId: string, nodeId: string, params: NodeParams) => {
-  const endpoint = `users/${userId}/nodes/${nodeId}`;
-  const oauthKey = params.oauth || await getOAuth(userId);
-  console.log('53', 'oauthKey', oauthKey);
-  return await httpClient(endpoint, 'patch', null, params, oauthKey);
-};
-
-const getOAuth = async (userId: string) => {
+export const getOAuth = async (userId: string) => {
   const user = await getUser(userId, 'no');
 
   const identity = await httpClient(

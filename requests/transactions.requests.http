@@ -1,0 +1,10 @@
+@api = http://localhost:3001/api
+
+### generate oauth token
+POST {{api}}/users/oauth/63caf414e53b3d7739000295
+Content-Type: application/json
+x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+
+### get user account
+GET {{api}}/transactions/user/63caf414e53b3d7739000295
+x-authentication-token: oauth_wRWlUxY52JFfX983qHhSsDektZvCOI0gBr6Nuian
