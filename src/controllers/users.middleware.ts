@@ -27,4 +27,3 @@ export const updateUserDataValidator = async (req: Request, res: Response, next:
     return res.status(400).json(`Invalid request! ${(error as Error).message}`);
   }
 };
-

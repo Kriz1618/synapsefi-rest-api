@@ -4,18 +4,28 @@ import {
   getTransaction,
   pullNodeTransactions,
   pullUserTransactions,
-
+  createNewTransaction,
+  createTransactions,
+  deleteTransaction,
+  retryAchTransaction,
 } from "../controllers/transactions.controller";
 import {
-  getUserTransactionsValidator,
+  createBatchTransactionsValidator,
+  createTransactionValidator,
   getNodeTransactionsValidator,
   getTransactionsValidator,
-} from "../controllers/transactionsValidators.controller";
+  getUserTransactionsValidator,
+  modifyTransactionValidator
+} from "../controllers/transactions.middleware";
 
 const router = Router();
 
-router.get('/user/:userId', getUserTransactionsValidator, pullUserTransactions);
-router.get('/node/:userId', getNodeTransactionsValidator, pullNodeTransactions);
-router.get('/trans/:userId/trans', getTransactionsValidator, getTransaction);
+router.get('/user', getUserTransactionsValidator, pullUserTransactions);
+router.get('/node', getNodeTransactionsValidator, pullNodeTransactions);
+router.get('/trans', getTransactionsValidator, getTransaction);
+router.post('/', createTransactionValidator, createNewTransaction);
+router.post('/batch', createBatchTransactionsValidator, createTransactions);
+router.patch('/:transactionId', modifyTransactionValidator, retryAchTransaction);
+router.delete('/:transactionId', modifyTransactionValidator, deleteTransaction);
 
 export default router;

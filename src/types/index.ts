@@ -181,9 +181,45 @@ export type NodeBarcodeParams = {
 };
 
 export type TransactionsParams = {
-  pageSize: string,
-  page: string,
+  pageSize?: string,
+  page?: string,
+  userId: string,
   nodeId?: string,
   transactioId?: string,
+  oauth: string
+};
+
+export type TransactionParams = {
+  userId: string,
+  nodeId: string,
+  oauth: string,
+  to: {
+    type: string,
+    id: string,
+  },
+  amount: {
+    amount: number,
+    currency: string
+  },
+  extra: {
+    ip: string,
+    note: string
+  }
+  from?: {
+    type: string,
+    id: string,
+  }
+};
+
+export type batchTransactiosParams = {
+  userId: string,
+  nodeId: string,
+  oauth: string,
+  transactions: TransactionParams[]
+};
+
+export type updateTransactioParams = {
+  userId: string,
+  nodeId: string,
   oauth: string
 };

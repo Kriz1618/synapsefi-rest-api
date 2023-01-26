@@ -11,7 +11,7 @@ import {
   createUserValidator,
   getUsersValidator,
   updateUserDataValidator
-} from "../controllers/usersValidators.controller";
+} from "../controllers/users.middleware";
 
 const router = Router();
 

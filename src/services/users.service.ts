@@ -1,6 +1,6 @@
 import { UserBody, UserData, UserQuery } from "../types";
 import { httpClient } from "./httpClient.service";
-import { scope } from "../consts";
+import { scope } from "../constants";
 
 
 export const getUsers = async (userParams: UserQuery) => {

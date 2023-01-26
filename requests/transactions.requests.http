@@ -3,8 +3,95 @@
 ### generate oauth token
 POST {{api}}/users/oauth/63caf414e53b3d7739000295
 Content-Type: application/json
-x-authentication-token: oauth_SWwsCMqD7GPRiJdAtaeXOQnbBxEhYoF0yNI8LfrV
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 
-### get user account
-GET {{api}}/transactions/user/63caf414e53b3d7739000295
-x-authentication-token: oauth_wRWlUxY52JFfX983qHhSsDektZvCOI0gBr6Nuian
+### get user transactions
+GET {{api}}/transactions/user?userId=63caf414e53b3d7739000295
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+### get node transactions
+GET {{api}}/transactions/node?userId=63caf414e53b3d7739000295&nodeId=63cea8c32b8b2439137aa9b7
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+### create transaction
+POST {{api}}/transactions
+Content-Type: application/json
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+{
+    "userId": "63caf414e53b3d7739000295",
+    "nodeId": "63cea8c32b8b2439137aa9b7",
+    "to": {
+    "type": "CRYPTO-US",
+    "id": "63cea8c32b8b2439137aa9b7"
+  },
+  "amount": {
+    "amount": 600.8,
+    "currency": "USD"
+  },
+  "extra": {
+    "ip": "255.127.79.76",
+    "note": "Test transaction crypto"
+  }
+}
+
+### create batch transactions
+POST {{api}}/transactions/batch
+Content-Type: application/json
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+{
+    "userId": "63caf414e53b3d7739000295",
+    "nodeId": "63cea8c32b8b2439137aa9b7",
+    "transactions": [
+        {
+            "to": {
+                "type": "CRYPTO-US",
+                "id": "63cea8c32b8b2439137aa9b7"
+            },
+            "amount": {
+                "amount": 40.8,
+                "currency": "USD"
+            },
+            "extra": {
+                "ip": "255.127.79.76",
+                "note": "Test transaction crypto"
+            }
+        },
+        {
+            "to": {
+                "type": "DEPOSIT-US",
+                "id": "63d2ad657f7f5fcea7a852a2"
+            },
+            "amount": {
+                "amount": 110.1,
+                "currency": "USD"
+            },
+            "extra": {
+                "ip": "255.127.79.76",
+                "note": "Test transaction"
+            }
+        }
+    ]
+}
+
+
+### retry transaction
+patch {{api}}/transactions/63d2b95aba25ee173c6cae76
+Content-Type: application/json
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+{
+    "userId": "63caf414e53b3d7739000295",
+    "nodeId": "63cea8c32b8b2439137aa9b7"
+}
+
+### delete transaction
+DELETE {{api}}/transactions/63d2b95aba25ee173c6cae76
+Content-Type: application/json
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+{
+    "userId": "63caf414e53b3d7739000295",
+    "nodeId": "63cea8c32b8b2439137aa9b7"
+}

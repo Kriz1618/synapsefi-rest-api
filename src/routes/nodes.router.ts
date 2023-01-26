@@ -5,7 +5,7 @@ import {
   createNodeValidator,
   getNodesValidator,
   updateNodeValidator,
-} from "../controllers/nodesValidators.controller";
+} from "../controllers/nodes.middleware";
 import {
   creatNewNode,
   generateEcashBarcode,
