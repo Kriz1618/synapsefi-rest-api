@@ -6,7 +6,7 @@ import {
   getSubscriptionLogs,
   getSubscriptions,
   updateSubscription
-} from "../services/subscriptions.service.ts";
+} from "../services/subscriptions.service";
 
 export const creatSubscriptions: Handler = async (req, res) => {
   try {

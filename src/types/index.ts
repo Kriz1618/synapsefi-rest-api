@@ -195,14 +195,30 @@ export type TransactionsParams = {
   oauth: string
 };
 
+type TransactionDestination = {
+  type: string,
+  id?: string,
+  meta?: {
+    check_front: string,
+    check_back: string,
+    srn_type: string,
+    srn_address: string
+  }
+};
+
+type TransactionFee = {
+  fee: string,
+  note: string,
+  to: {
+    id: string
+  }
+};
+
 export type TransactionParams = {
   userId: string,
   nodeId: string,
   oauth: string,
-  to: {
-    type: string,
-    id: string,
-  },
+  to: TransactionDestination,
   amount: {
     amount: number,
     currency: string
@@ -211,10 +227,8 @@ export type TransactionParams = {
     ip: string,
     note: string
   }
-  from?: {
-    type: string,
-    id: string,
-  }
+  from?: TransactionDestination,
+  fees?: TransactionFee[]
 };
 
 export type batchTransactiosParams = {

@@ -33,3 +33,7 @@ export const getCryptoQuotes = async () => {
 export const getNodeTypes = async () => {
   return await httpClient('nodes/types');
 };
+
+export const getAtms = async () => {
+  return httpClient('nodes/atms');
+};

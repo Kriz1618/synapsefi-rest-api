@@ -1,13 +1,14 @@
 import { Handler } from "express";
 
 import { handleError } from "../commons";
-import { getCryptoQuotes } from "../services/nodes.service";
 import {
   createNode,
   getUserNodes,
   updateNode,
   createEcashBarcode,
   getNodeTypes,
+  getAtms,
+  getCryptoQuotes
 } from '../services/nodes.service';
 
 export const creatNewNode: Handler = async (req, res) => {
@@ -59,6 +60,15 @@ export const generateEcashBarcode: Handler = async (req, res) => {
 export const pullCryptoQuotes: Handler = async (req, res) => {
   try {
     const response = await getCryptoQuotes();
+    return res.json(response);
+  } catch (error) {
+    return res.status(500).json(handleError(error));
+  }
+};
+
+export const pullAtms: Handler = async (req, res) => {
+  try {
+    const response = await getAtms();
     return res.json(response);
   } catch (error) {
     return res.status(500).json(handleError(error));

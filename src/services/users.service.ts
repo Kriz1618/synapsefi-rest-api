@@ -32,27 +32,7 @@ export const updateUserData = async (userId: string, params: UserData) => {
   return await httpClient(endpoint, 'patch', null, params, params.oauth);
 };
 
-export const getUserOAuth = async (userId: string) => {
-  const user = await getUser(userId, 'no');
-
-  const identity = await httpClient(
-    `oauth/${userId}`,
-    'post',
-    null,
-    {
-      refresh_token: user.refresh_token,
-      scope
-    }
-  );
-
-  if (!identity?.oauth_key) {
-    throw 'Error getting oauth key';
-  }
-
-  return identity.oauth_key;
-};
-
-export const getOAuth = async (userId: string) => {
+export const generateUserOAuth = async (userId: string) => {
   const user = await getUser(userId, 'no');
 
   const identity = await httpClient(

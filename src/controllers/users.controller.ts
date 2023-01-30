@@ -4,8 +4,8 @@ import { UserQuery } from "../types";
 import { handleError } from "../commons";
 import {
   createUser,
+  generateUserOAuth,
   getUsers,
-  getOAuth,
   getUser,
   updateUserData,
 } from '../services/users.service';
@@ -49,7 +49,7 @@ export const updateUser: Handler = async (req, res) => {
 export const generateOaut: Handler = async (req, res) => {
   try {
     const { userId } = req.params
-    const response = await getOAuth(userId);
+    const response = await generateUserOAuth(userId);
     return res.json(response);
   } catch (error) {
     return res.status(500).json(handleError(error));

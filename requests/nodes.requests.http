@@ -57,3 +57,7 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 ### get crypto quotes
 GET {{api}}/nodes/crypto-quotes 
 x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+
+### get atms
+GET {{api}}/nodes/atms 
+x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
