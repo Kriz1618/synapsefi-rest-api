@@ -1,19 +1,19 @@
 @api = http://localhost:3001/api
 
 
-### get crypto quotes
-GET {{api}}/nodes/types 
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
-
 ### generate oauth token
 POST {{api}}/users/oauth/63caf414e53b3d7739000295
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
+
+### get node types
+GET {{api}}/nodes/types 
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
 
 ### create deposit account
 POST {{api}}/nodes/63caf414e53b3d7739000295
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
 
 {
   "type": "DEPOSIT-US",
@@ -28,13 +28,13 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 ### get user nodes
 GET {{api}}/nodes/all/63caf414e53b3d7739000295?type=CRYPTO-US
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
 
 
 ### update node
 PATCH  {{api}}/nodes/63caf414e53b3d7739000295/63cea8c32b8b2439137aa9b7
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
 
 {
   "next_payment": 14
@@ -44,7 +44,7 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 ### create ecash barcode
 POST  {{api}}/nodes/ecash/barcode
 Content-Type: application/json
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
 
 {
   "amount": 100,
@@ -56,8 +56,8 @@ x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
 
 ### get crypto quotes
 GET {{api}}/nodes/crypto-quotes 
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp
 
 ### get atms
 GET {{api}}/nodes/atms 
-x-authentication-token: oauth_YhajI9lB3yHbMsmGDoLuvUKZAXi7FPQceOn2SwTq
+x-authentication-token: oauth_GFsZPEu2DoLjBYeWN03kQArXq8fdVJ1iwT7ScKhp

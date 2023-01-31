@@ -1,7 +1,8 @@
-import express from "express";
-import morgan from "morgan";
-import cors from "cors";
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
 import * as dotenv from 'dotenv';
+
 dotenv.config();
 
 import applyRoutes from './routes';
